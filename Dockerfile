@@ -37,7 +37,8 @@ WORKDIR "/home"
 
 RUN git clone https://github.com/Ynov-webRTC/ynov_rtc.git
 
-RUN cd /ynov_rtc && sudo npm install
+WORKDIR "/home/ynov_rtc"
+RUN sudo npm install
 RUN npm install -g bower \
 	&& cd /public && bower install --allow-root
 
