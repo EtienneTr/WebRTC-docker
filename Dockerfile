@@ -1,6 +1,5 @@
-# stream oriented kurento
-#
-# VERSION               4.4.3
+# stream oriented kurento VERSION  4.4.3
+# Added mongoDB & NodeJS project
 
 FROM      ubuntu:14.04
 
@@ -28,7 +27,7 @@ RUN apt-get -y install python \
 #mongodb
 RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
   && echo "deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list \
-  && apt-get update && apt-get -q -y install
+  && apt-get update && apt-get -y install mongodb-org
 
 # Create the MongoDB data directory
 RUN mkdir -p /data/db
