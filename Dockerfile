@@ -31,8 +31,7 @@ RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 \
   && apt-get update && apt-get -q -y install
 
 # Create the MongoDB data directory
-RUN mkdir -p /data/db \
-	&& service mongod start
+RUN mkdir -p /data/db
 
 WORKDIR "/home"
 
@@ -40,8 +39,7 @@ RUN git clone https://github.com/Ynov-webRTC/ynov_rtc.git
 
 RUN cd /ynov_rtc && sudo npm install \
 	&& npm install -g bower \
-	&& cd /public && bower install --allow-root \
-	&& cd ../ && npm start
+	&& cd /public && bower install --allow-root
 
 
 EXPOSE 8888 8443 27017
@@ -51,3 +49,8 @@ COPY ./entrypoint.sh /entrypoint.sh
 ENV GST_DEBUG=Kurento*:5
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["service mongod start"]
+
+WORKDIR "/home/ynov_rtc"
+CMD ["npm start"]
