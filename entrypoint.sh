@@ -14,10 +14,10 @@ fi
 # Remove ipv6 local loop until ipv6 is supported
 cat /etc/hosts | sed '/::1/d' | tee /etc/hosts > /dev/null
 
-exec /usr/bin/kurento-media-server "$@"
+exec /usr/bin/kurento-media-server "$@" &
 
 #mongo
-exec /etc/init.d/mongod start "$@"
+exec /etc/init.d/mongod start "$@" &
 
 #node
 mypath="/home/ynov_rtc/server.js"
