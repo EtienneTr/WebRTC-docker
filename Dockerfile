@@ -53,8 +53,3 @@ ENV GST_DEBUG=Kurento*:5
 
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["service mongod start"]
-
-WORKDIR "/home/ynov_rtc"
-CMD ["npm start"]
