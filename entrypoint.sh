@@ -24,6 +24,6 @@ sleep 10
 #node
 mypath="/home/ynov_rtc/server.js"
 cd `dirname $mypath`
-npm start
+npm start &
 
 wait
